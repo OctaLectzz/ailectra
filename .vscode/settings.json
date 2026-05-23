@@ -25,5 +25,5 @@
     "typescriptreact": "(?<=class(Name)?=\\{?\"?)([^\"{]*)(?=\"?\\}?)"
   },
 
-  "ai-localizer.disabled": false
+  "ai-localizer.disabled": true
 }

@@ -1,35 +1,35 @@
 {
+  "auth": {
+    "emailLabel": "Alamat Email",
+    "googleButton": "Lanjutkan dengan Google",
+    "haveAccount": "Sudah punya akun?",
+    "loginSubtitle": "Akses seluruh penyedia AI Anda dengan satu koneksi berkas kredensial yang aman",
+    "loginTitle": "Selamat datang kembali di Ailectra",
+    "noAccount": "Belum punya akun?",
+    "orText": "Atau lanjutkan dengan email",
+    "passwordLabel": "Kata Sandi",
+    "registerSubtitle": "Amankan ruang kerja akses Anda dan satukan tools AI Anda hari ini",
+    "registerTitle": "Buat akun Ailectra Anda",
+    "submitLogin": "Masuk",
+    "submitRegister": "Daftar"
+  },
+  "home": {
+    "cta": "Mulai Sekarang",
+    "heroDescription": "Hubungkan, atur, dan luncurkan semua tools AI Anda dari satu dashboard futuristik.",
+    "heroTitle": "Satu Pusat Akses untuk Setiap Akun AI"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "features": "Fitur",
+    "getStarted": "Mulai Sekarang",
+    "integrations": "Integrasi",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "pricing": "Harga",
+    "security": "Keamanan"
+  },
   "site": {
     "name": "Ailectra",
     "tagline": "Satu Akses untuk Setiap AI"
-  },
-  "nav": {
-    "features": "Fitur",
-    "integrations": "Integrasi",
-    "security": "Keamanan",
-    "pricing": "Harga",
-    "login": "Masuk",
-    "getStarted": "Mulai Sekarang",
-    "dashboard": "Dashboard",
-    "logout": "Keluar"
-  },
-  "home": {
-    "heroTitle": "Satu Pusat Akses untuk Setiap Akun AI",
-    "heroDescription": "Hubungkan, atur, dan luncurkan semua tools AI Anda dari satu dashboard futuristik.",
-    "cta": "Mulai Sekarang"
-  },
-  "auth": {
-    "loginTitle": "Selamat datang kembali di Ailectra",
-    "loginSubtitle": "Akses seluruh penyedia AI Anda dengan satu koneksi berkas kredensial yang aman",
-    "emailLabel": "Alamat Email",
-    "passwordLabel": "Kata Sandi",
-    "submitLogin": "Masuk",
-    "submitRegister": "Daftar",
-    "registerTitle": "Buat akun Ailectra Anda",
-    "registerSubtitle": "Amankan ruang kerja akses Anda dan satukan tools AI Anda hari ini",
-    "googleButton": "Lanjutkan dengan Google",
-    "orText": "Atau lanjutkan dengan email",
-    "noAccount": "Belum punya akun?",
-    "haveAccount": "Sudah punya akun?"
   }
 }

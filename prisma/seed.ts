@@ -1,6 +1,5 @@
-import { PrismaClient, ProviderStatus, AiAuthType, LaunchType } from "@prisma/client"
-
-const prisma = new PrismaClient()
+import { AiAuthType, LaunchType, ProviderStatus } from "@prisma/client"
+import { prisma } from "../src/db/prisma"
 
 const providers = [
   {

@@ -1,0 +1,35 @@
+{
+  "site": {
+    "name": "Ailectra",
+    "tagline": "One Access for Every AI"
+  },
+  "nav": {
+    "features": "Features",
+    "integrations": "Integrations",
+    "security": "Security",
+    "pricing": "Pricing",
+    "login": "Login",
+    "getStarted": "Get Started",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  },
+  "home": {
+    "heroTitle": "One Access Hub for Every AI Account",
+    "heroDescription": "Connect, organize, and launch your AI tools from one futuristic dashboard.",
+    "cta": "Get Started Now"
+  },
+  "auth": {
+    "loginTitle": "Welcome back to Ailectra",
+    "loginSubtitle": "Access all your AI providers with one single vault credentials connection",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "submitLogin": "Sign In",
+    "submitRegister": "Sign Up",
+    "registerTitle": "Create your Ailectra account",
+    "registerSubtitle": "Secure your access workspace and unify your AI tools today",
+    "googleButton": "Continue with Google",
+    "orText": "Or continue with email",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  }
+}

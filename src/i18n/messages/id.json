@@ -1,0 +1,35 @@
+{
+  "site": {
+    "name": "Ailectra",
+    "tagline": "Satu Akses untuk Setiap AI"
+  },
+  "nav": {
+    "features": "Fitur",
+    "integrations": "Integrasi",
+    "security": "Keamanan",
+    "pricing": "Harga",
+    "login": "Masuk",
+    "getStarted": "Mulai Sekarang",
+    "dashboard": "Dashboard",
+    "logout": "Keluar"
+  },
+  "home": {
+    "heroTitle": "Satu Pusat Akses untuk Setiap Akun AI",
+    "heroDescription": "Hubungkan, atur, dan luncurkan semua tools AI Anda dari satu dashboard futuristik.",
+    "cta": "Mulai Sekarang"
+  },
+  "auth": {
+    "loginTitle": "Selamat datang kembali di Ailectra",
+    "loginSubtitle": "Akses seluruh penyedia AI Anda dengan satu koneksi berkas kredensial yang aman",
+    "emailLabel": "Alamat Email",
+    "passwordLabel": "Kata Sandi",
+    "submitLogin": "Masuk",
+    "submitRegister": "Daftar",
+    "registerTitle": "Buat akun Ailectra Anda",
+    "registerSubtitle": "Amankan ruang kerja akses Anda dan satukan tools AI Anda hari ini",
+    "googleButton": "Lanjutkan dengan Google",
+    "orText": "Atau lanjutkan dengan email",
+    "noAccount": "Belum punya akun?",
+    "haveAccount": "Sudah punya akun?"
+  }
+}

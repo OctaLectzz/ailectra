@@ -75,15 +75,15 @@ export function ConnectionsDirectory({ initialConnections }: ConnectionsDirector
   return (
     <div className="space-y-6">
       {/* Search Filter Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="relative flex-1 max-w-md w-full">
           <Input
             placeholder={t("searchPlaceholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-[#0b1020] border-[#11172a] focus-visible:ring-primary text-slate-200 rounded-xl pl-10 pr-4 py-3 h-auto text-sm"
+            className="bg-slate-950/40 border-slate-800/80 focus-visible:ring-primary text-slate-200 rounded-xl pl-10 pr-4 py-3 h-11 text-sm shadow-sm"
           />
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
             <Search className="w-4 h-4" />
           </div>
         </div>
@@ -91,7 +91,7 @@ export function ConnectionsDirectory({ initialConnections }: ConnectionsDirector
         <Button
           asChild
           variant="default"
-          className="bg-primary hover:bg-primary-hover text-white rounded-xl px-5 h-11 shadow-lg shadow-primary/10"
+          className="bg-primary hover:bg-primary-hover text-white rounded-xl px-5 h-11 shadow-lg shadow-primary/10 w-full sm:w-auto"
         >
           <Link href="/dashboard/accounts/new">
             <Plus className="w-4 h-4 mr-1.5" />

@@ -5,6 +5,7 @@ import { SecurityStatusCard } from "@/components/dashboard/security-status-card"
 import { StatsCard } from "@/components/dashboard/stats-card"
 import { DashboardShell } from "@/components/layout/dashboard-shell"
 import { Button } from "@/components/ui/button"
+import { PageHeader } from "@/components/ui/page-header"
 import prisma from "@/db/prisma"
 import { Link } from "@/i18n/routing"
 import { authOptions } from "@/lib/auth"
@@ -47,30 +48,24 @@ export default async function DashboardPage() {
   return (
     <DashboardShell>
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">
-            {t("overview") === "Ikhtisar" ? "Selamat Datang di Command Center" : "Welcome to your Command Center"}
-          </h2>
-          <p className="text-sm text-slate-400">
-            {t("overview") === "Ikhtisar"
-              ? "Kelola koneksi AI Anda dan pantau riwayat peluncuran dengan aman."
-              : "Manage your AI credentials and monitor launch history securely."}
-          </p>
-        </div>
-        <div className="flex items-center space-x-3">
+      <PageHeader
+        title={t("overview") === "Ikhtisar" ? "Command Center" : "Command Center"}
+        description={t("overview") === "Ikhtisar"
+          ? "Kelola koneksi AI Anda dan pantau riwayat peluncuran dengan aman."
+          : "Manage your AI credentials and monitor launch history securely."}
+        actions={
           <Button
             asChild
             variant="default"
-            className="bg-primary hover:bg-primary-hover text-white rounded-xl px-5 shadow-lg shadow-primary/10"
+            className="bg-primary hover:bg-primary-hover text-white rounded-xl px-5 shadow-[0_0_15px_rgba(34,211,238,0.4)] transition-all hover:scale-105"
           >
             <Link href="/dashboard/accounts/new">
               <Plus className="w-4 h-4 mr-1.5" />
               {t("addConnection")}
             </Link>
           </Button>
-        </div>
-      </div>
+        }
+      />
 
       {/* Grid of Stats Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,28 +97,31 @@ export default async function DashboardPage() {
 
       {/* Analytics and Security section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 min-h-[300px]">
           <DashboardChart
             data={chartData}
             title={t("overview") === "Ikhtisar" ? "Volume Peluncuran 7 Hari Terakhir" : "Launch Activity (Last 7 Days)"}
           />
         </div>
-        <div>
+        <div className="min-h-[300px]">
           <SecurityStatusCard />
         </div>
       </div>
 
       {/* Recent Activities section */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pb-12">
         {/* Recent Connections Grid */}
         <div className="xl:col-span-1 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-white">{t("recentConnections")}</h3>
+            <h3 className="text-base font-bold text-white flex items-center">
+              <KeyRound className="w-4 h-4 mr-2 text-primary" />
+              {t("recentConnections")}
+            </h3>
             <Button
               asChild
               variant="ghost"
               size="sm"
-              className="text-primary hover:text-primary-hover hover:bg-primary/5 text-xs rounded-xl"
+              className="text-slate-400 hover:text-white hover:bg-slate-800 text-xs rounded-xl transition-all"
             >
               <Link href="/dashboard/accounts">
                 View all
@@ -133,7 +131,7 @@ export default async function DashboardPage() {
           </div>
           
           {recentConnections.length === 0 ? (
-            <div className="bg-[#0b1020] border border-[#11172a] rounded-2xl p-6 text-center text-xs text-slate-500">
+            <div className="bg-[#050712]/60 backdrop-blur-md border border-slate-800/60 rounded-2xl p-6 text-center text-xs text-slate-500">
               No accounts connected. Click "Add Connection" above to get started.
             </div>
           ) : (
@@ -148,12 +146,15 @@ export default async function DashboardPage() {
         {/* Recent Launches Logs */}
         <div className="xl:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-white">{t("recentLaunches")}</h3>
+            <h3 className="text-base font-bold text-white flex items-center">
+              <History className="w-4 h-4 mr-2 text-primary" />
+              {t("recentLaunches")}
+            </h3>
             <Button
               asChild
               variant="ghost"
               size="sm"
-              className="text-primary hover:text-primary-hover hover:bg-primary/5 text-xs rounded-xl"
+              className="text-slate-400 hover:text-white hover:bg-slate-800 text-xs rounded-xl transition-all"
             >
               <Link href="/dashboard/history">
                 View logs

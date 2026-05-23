@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { GlassPanel } from "@/components/ui/glass-panel"
 import { Activity } from "lucide-react"
 import { useState } from "react"
 
@@ -55,14 +55,14 @@ export function DashboardChart({ data, title }: DashboardChartProps) {
     : ""
 
   return (
-    <Card className="bg-[#0b1020] border-[#11172a] hover:border-primary/20 transition-all duration-300">
-      <CardHeader className="flex flex-row items-center justify-between pb-4">
-        <CardTitle className="text-base font-semibold text-white flex items-center">
-          <Activity className="w-4 h-4 mr-2 text-secondary" />
+    <GlassPanel interactive className="w-full h-full p-0">
+      <div className="flex flex-row items-center justify-between p-6 pb-2">
+        <h3 className="text-base font-semibold text-white flex items-center">
+          <Activity className="w-5 h-5 mr-2 text-secondary drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]" />
           {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="p-0 sm:p-6 sm:pt-0">
+        </h3>
+      </div>
+      <div className="p-0 sm:p-6 sm:pt-0">
         <div className="relative w-full aspect-2.5/1 sm:aspect-2.5/1 min-h-[220px]">
           <svg
             viewBox={`0 0 ${width} ${height}`}
@@ -218,8 +218,8 @@ export function DashboardChart({ data, title }: DashboardChartProps) {
             </div>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </GlassPanel>
   )
 }
 export default DashboardChart

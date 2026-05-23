@@ -23,7 +23,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -213,40 +213,53 @@ export function ConnectionCard({ connection, onDeleted, onUpdated }: ConnectionC
     }
   }
 
-  const formattedDate = connection.lastLaunchedAt
-    ? new Date(connection.lastLaunchedAt).toLocaleDateString(undefined, {
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "Never"
+  const [formattedDate, setFormattedDate] = useState<string>("Loading...")
+
+  useEffect(() => {
+    if (connection.lastLaunchedAt) {
+      setFormattedDate(
+        new Date(connection.lastLaunchedAt).toLocaleDateString(undefined, {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      )
+    } else {
+      setFormattedDate("Never")
+    }
+  }, [connection.lastLaunchedAt])
 
   return (
+  return (
     <>
-      <Card className="bg-[#0b1020] border-[#11172a] hover:border-slate-800 transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full group">
-        <CardHeader className="pb-3 flex flex-row items-start justify-between space-y-0">
+      <GlassPanel
+        interactive
+        whileHover={{ y: -4 }}
+        className="flex flex-col justify-between h-full group bg-[#050712]/40"
+      >
+        <div className="p-5 flex flex-row items-start justify-between space-y-0 relative z-10">
           <div className="flex items-center space-x-3">
             <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-white shadow-md text-sm select-none"
+              className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-lg text-sm select-none group-hover:scale-105 transition-transform duration-300"
               style={{
-                background: `linear-gradient(135deg, ${brandColor} 0%, rgba(13,18,36,1) 100%)`,
-                border: `1px solid ${brandColor}22`,
+                background: `linear-gradient(135deg, ${brandColor} 0%, rgba(13,18,36,0.8) 100%)`,
+                border: `1px solid ${brandColor}55`,
               }}
             >
               {connection.provider.name.charAt(0)}
             </div>
             <div>
-              <CardTitle className="text-base font-bold text-white leading-tight">
+              <h3 className="text-sm font-bold text-white leading-tight">
                 {connection.label}
-              </CardTitle>
-              <span className="text-xs text-slate-500 font-medium">
+              </h3>
+              <span className="text-xs text-slate-400 font-medium group-hover:text-slate-300 transition-colors">
                 {connection.provider.name}
               </span>
             </div>
           </div>
 
-          <div className="flex space-x-1">
+          <div className="flex space-x-1 opacity-60 group-hover:opacity-100 transition-opacity">
             <Button
               variant="ghost"
               size="icon"
@@ -264,30 +277,30 @@ export function ConnectionCard({ connection, onDeleted, onUpdated }: ConnectionC
                 })
                 setShowEditModal(true)
               }}
-              className="text-slate-500 hover:text-white hover:bg-slate-900 rounded-lg w-8 h-8"
+              className="text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg w-8 h-8 transition-colors"
             >
-              <Edit2 className="w-4 h-4" />
+              <Edit2 className="w-3.5 h-3.5" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleDelete}
               disabled={isDeleting}
-              className="text-slate-500 hover:text-destructive hover:bg-destructive/10 rounded-lg w-8 h-8"
+              className="text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg w-8 h-8 transition-colors"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-3.5 h-3.5" />
             </Button>
           </div>
-        </CardHeader>
+        </div>
 
-        <CardContent className="py-2 space-y-2 flex-1">
+        <div className="px-5 py-2 space-y-3 flex-1 relative z-10">
           {/* Email / Username details */}
           {(connection.accountEmail || connection.username) && (
-            <div className="bg-[#070a18]/40 border border-[#11172a] rounded-lg p-2.5 space-y-1">
+            <div className="bg-slate-900/40 border border-slate-800/60 rounded-xl p-3 space-y-2 group-hover:border-slate-700/60 transition-colors">
               {connection.accountEmail && (
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-slate-500">Email</span>
-                  <span className="text-slate-300 truncate max-w-[160px]">
+                  <span className="text-slate-300 font-medium truncate max-w-[160px]">
                     {connection.accountEmail}
                   </span>
                 </div>
@@ -295,7 +308,7 @@ export function ConnectionCard({ connection, onDeleted, onUpdated }: ConnectionC
               {connection.username && (
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-slate-500">Username</span>
-                  <span className="text-slate-300 truncate max-w-[160px]">
+                  <span className="text-slate-300 font-medium truncate max-w-[160px]">
                     {connection.username}
                   </span>
                 </div>
@@ -304,44 +317,47 @@ export function ConnectionCard({ connection, onDeleted, onUpdated }: ConnectionC
           )}
 
           {/* Launch Details */}
-          <div className="flex justify-between items-center text-xs pt-1">
+          <div className="flex justify-between items-center text-xs px-1">
             <span className="text-slate-500 flex items-center">
-              <Calendar className="w-3 h-3 mr-1 text-slate-500" />
+              <Calendar className="w-3.5 h-3.5 mr-1.5 text-slate-500" />
               Last used
             </span>
             <span className="text-slate-300 font-medium">{formattedDate}</span>
           </div>
 
           {connection.secretHint && (
-            <div className="flex justify-between items-center text-xs">
+            <div className="flex justify-between items-center text-xs px-1">
               <span className="text-slate-500 flex items-center">
-                <Lock className="w-3 h-3 mr-1 text-slate-500" />
+                <Lock className="w-3.5 h-3.5 mr-1.5 text-slate-500" />
                 Key type
               </span>
-              <span className="text-slate-400 font-mono text-[10px] bg-slate-900/60 px-1.5 py-0.5 rounded border border-[#11172a]">
+              <span className="text-slate-400 font-mono text-[10px] bg-slate-900/80 px-2 py-0.5 rounded border border-slate-800">
                 {connection.secretHint}
               </span>
             </div>
           )}
-        </CardContent>
+        </div>
 
-        <CardFooter className="pt-3 border-t border-[#11172a] mt-4 flex items-center">
+        <div className="px-5 pt-3 pb-5 mt-2 relative z-10">
           <Button
             onClick={handleLaunch}
             disabled={isLaunching}
-            className="w-full bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-xl h-9 shadow-lg shadow-primary/5"
+            className="w-full bg-slate-800/50 hover:bg-primary/20 hover:text-white hover:border-primary/50 border border-slate-700 text-slate-300 text-sm font-semibold rounded-xl h-10 transition-all duration-300 group/btn overflow-hidden relative"
           >
-            {isLaunching ? (
-              "Launching..."
-            ) : (
-              <>
-                <Sparkles className="w-3.5 h-3.5 mr-1.5 text-secondary" />
-                {t("launchBtn")}
-              </>
-            )}
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+            <div className="relative z-10 flex items-center justify-center">
+              {isLaunching ? (
+                "Launching..."
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 mr-2 text-primary group-hover/btn:text-secondary group-hover/btn:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all duration-300" />
+                  {t("launchBtn")}
+                </>
+              )}
+            </div>
           </Button>
-        </CardFooter>
-      </Card>
+        </div>
+      </GlassPanel>
 
       {/* Strategy launch modal for manual credentials copy */}
       {showLaunchModal && launchPayload && (

@@ -3,6 +3,7 @@
 import { LanguageSwitcher } from "@/components/common/language-switcher"
 import { ThemeToggle } from "@/components/common/theme-toggle"
 import { usePathname } from "@/i18n/routing"
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 export function DashboardHeader() {
@@ -26,19 +27,32 @@ export function DashboardHeader() {
   }
 
   return (
-    <header className="hidden md:flex h-16 items-center justify-between px-8 border-b border-[#11172a] bg-void-navy sticky top-0 z-10">
-      {/* Dynamic Page Title */}
-      <div>
-        <h1 className="text-xl font-bold tracking-tight text-white">{pageTitle}</h1>
+    <motion.header 
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="hidden md:flex h-16 items-center justify-between px-8 border-b border-slate-800/60 bg-[#050712]/60 backdrop-blur-2xl sticky top-0 z-50 shadow-sm"
+    >
+      {/* Dynamic Page Title (Breadcrumb style) */}
+      <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider font-space-grotesk">
+        <span className="text-slate-500">Dashboard</span>
+        <span className="text-slate-700">/</span>
+        <motion.span 
+          key={pageTitle}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="text-secondary drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
+        >
+          {pageTitle}
+        </motion.span>
       </div>
 
       {/* Header Actions: LanguageSwitcher & ThemeToggle */}
       <div className="flex items-center space-x-4">
         <LanguageSwitcher />
-        <div className="w-px h-6 bg-[#11172a]" />
+        <div className="w-px h-6 bg-slate-800/60" />
         <ThemeToggle />
       </div>
-    </header>
+    </motion.header>
   )
 }
 export default DashboardHeader

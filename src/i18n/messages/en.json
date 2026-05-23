@@ -255,6 +255,7 @@
     "security": "Security",
     "settings": "Settings",
     "help": "Help",
+    "logout": "Logout",
     "totalConnections": "Connected Accounts",
     "totalProviders": "Active Providers",
     "launchesThisWeek": "Launches This Week",

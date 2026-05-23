@@ -186,6 +186,7 @@
   --animate-slide-down: slide-down 0.5s ease-out;
   --animate-fade-in: fade-in 0.5s ease-out;
   --animate-spin-slow: spin 8s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
 }
 
 /* ============================================================
@@ -219,6 +220,69 @@
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Aurora blob animations */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, 10%) scale(1.1); }
+  50% { transform: translate(-5%, 5%) scale(0.95); }
+  75% { transform: translate(8%, -5%) scale(1.05); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-8%, 6%) scale(1.08); }
+  66% { transform: translate(6%, -8%) scale(0.92); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(10%, -5%) scale(1.12); }
+  70% { transform: translate(-6%, 10%) scale(0.9); }
+}
+
+.animate-aurora-1 { animation: aurora-drift-1 20s ease-in-out infinite; }
+.animate-aurora-2 { animation: aurora-drift-2 25s ease-in-out infinite; }
+.animate-aurora-3 { animation: aurora-drift-3 18s ease-in-out infinite; }
+
+/* Beam sweep */
+@keyframes beam-sweep {
+  0% { opacity: 0; transform: translateY(-20%); }
+  30% { opacity: 0.6; }
+  70% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(20%); }
+}
+
+.animate-beam {
+  animation: beam-sweep 6s ease-in-out infinite;
+}
+
+/* Particle float */
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  25% { transform: translate(10px, -20px) scale(1.2); opacity: 0.6; }
+  50% { transform: translate(-5px, -40px) scale(0.8); opacity: 0.4; }
+  75% { transform: translate(15px, -20px) scale(1.1); opacity: 0.5; }
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Orbit spin */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse ring */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.15); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.3; }
 }
 
 /* ============================================================

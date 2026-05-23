@@ -1,3 +1,10 @@
+export { AuroraBackground } from "./aurora-background"
+export { BackgroundBeams } from "./background-beams"
+export { DotPattern } from "./dot-pattern"
+export { GridPattern } from "./grid-pattern"
 export { MotionReveal } from "./motion-reveal"
+export { ParticlesBackground } from "./particles-background"
+export { Spotlight } from "./spotlight"
 export { StaggerContainer, StaggerItem } from "./stagger-container"
+export { ThreeAIOrbit } from "./three-ai-orbit"
 

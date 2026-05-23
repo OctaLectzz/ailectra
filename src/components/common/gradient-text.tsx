@@ -9,8 +9,9 @@ type GradientTextProps = {
 export function GradientText({
   children,
   className,
-  as: Component = "span",
+  as = "span",
 }: GradientTextProps) {
+  const Component = as as any
   return (
     <Component className={cn("gradient-text", className)}>
       {children}

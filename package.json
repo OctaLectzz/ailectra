@@ -10,7 +10,15 @@
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "i18n:extract": "node ./scripts/extract-i18n.js",
+    "i18n:rewrite": "node ./scripts/replace-i18n.js",
+    "i18n:sync": "node ./scripts/sync-i18n.js",
+    "i18n:fix-untranslated": "node ./scripts/fix-untranslated.js",
+    "i18n:rewrite-blade": "node ./scripts/rewrite-i18n-blade.js",
+    "i18n:cleanup-unused": "node ./scripts/cleanup-i18n-unused.js",
+    "i18n:restore-invalid": "node ./scripts/restore-i18n-invalid.js",
+    "postbuild": "npm run i18n:sync"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -38,9 +46,20 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "magic-string": "^0.30.21",
+    "oxc-parser": "^0.132.0",
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.3",
     "typescript": "^5"
+  },
+  "aiI18n": {
+    "locales": [
+      "en",
+      "id",
+      "fr",
+      "zh"
+    ],
+    "srcRoot": "src"
   }
 }

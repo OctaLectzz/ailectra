@@ -1,0 +1,29 @@
+# Task Checklist — Ailectra Dashboard Shell
+
+- [x] Create Zod validators
+- [x] Create database query helpers (`account-queries.ts`, `provider-queries.ts`)
+- [x] Create server actions (`account-actions.ts`, `settings-actions.ts`)
+- [x] Add translation strings to `en.json` and `id.json`
+- [x] Build layout components
+  - [x] `DashboardShell`
+  - [x] `DashboardSidebar`
+  - [x] `DashboardHeader`
+- [x] Build subpage components
+  - [x] `StatsCard`
+  - [x] `DashboardChart` (custom SVG)
+  - [x] `ProviderCard`
+  - [x] `ConnectionCard`
+  - [x] `AddConnectionForm`
+  - [x] `LaunchHistoryTable`
+- [x] Build localized dashboard pages
+  - [x] `/dashboard/layout.tsx` (route group layout)
+  - [x] `/dashboard` (overview)
+  - [x] `/dashboard/tools` (AI tools)
+  - [x] `/dashboard/accounts` (connections grid)
+  - [x] `/dashboard/accounts/new` (add connection)
+  - [x] `/dashboard/history` (launch logs)
+  - [x] `/dashboard/security` (vault config)
+  - [x] `/dashboard/settings` (preferences)
+- [x] Verification and Polish
+  - [x] Typecheck
+  - [x] Build check
